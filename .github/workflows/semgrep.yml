@@ -21,4 +21,8 @@ jobs:
       image: returntocorp/semgrep
     steps:
     - uses: actions/checkout@v3
-    - run: semgrep ci
+    - run: |
+        export SEMGREP_REPO_NAME='big-repo-java'
+        semgrep ci --include='java/*'
+        export SEMGREP_REPO_NAME='big-repo-csharp'
+        semgrep ci --include='csharp/*'
